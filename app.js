@@ -1,0 +1,13 @@
+const server = require("http");
+const express = require("express");
+const add_users = require("./routes/add-users.js");
+const users = require("./routes/users.js");
+const page404 = require("./controllers/404page.js");
+const app = express();
+const port = 3003;
+server.createServer(app).listen(port);
+app.set("view engine", "ejs");
+app.set("views", "views");
+app.use(add_users.routes);
+app.use(users.routes);
+app.use(page404.page404);
